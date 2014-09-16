@@ -38,6 +38,19 @@
     return [NSButtonCell class];
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
+        _shortcutCell.buttonType = NSPushOnPushOffButton;
+        _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
+        _enabled = YES;
+        [self resetShortcutCellStyle];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frameRect
 {
     self = [super initWithFrame:frameRect];
