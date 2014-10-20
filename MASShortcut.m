@@ -56,6 +56,16 @@ NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return shortcut;
 }
 
+- (BOOL)isEqual:(id)object {
+    if (!object) return NO;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return [self isEqualToShortcut:object];
+}
+
+- (BOOL)isEqualToShortcut:(MASShortcut *)shortcut {
+    return self.modifierFlags == shortcut.modifierFlags && self.keyCode == shortcut.keyCode;
+}
+
 #pragma mark - Shortcut accessors
 
 - (NSData *)data

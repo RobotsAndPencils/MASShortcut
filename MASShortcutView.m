@@ -133,6 +133,8 @@
 
 - (void)setShortcutValue:(MASShortcut *)shortcutValue
 {
+    if ([_shortcutValue isEqual:shortcutValue]) return;
+
     _shortcutValue = shortcutValue;
     [self resetToolTips];
     [self setNeedsDisplay:YES];
